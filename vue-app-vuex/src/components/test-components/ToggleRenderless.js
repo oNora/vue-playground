@@ -1,13 +1,28 @@
 export default {
+    props: {
+        initialState: {
+            type: Boolean,
+            default: false
+        }
+    },
+ 
     data () {
         return {
-            greeting: 'Hello renderless component'
+            state: this.initialState
         }
     },
  
     render () {
         return this.$slots.default({
-            greeting: this.greeting
+            state: this.state,
+            toggle: this.toggle
         })
+    },
+ 
+    methods: {
+        toggle () {
+            this.state = !this.state
+        }
     }
 }
+
