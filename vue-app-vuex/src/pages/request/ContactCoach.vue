@@ -13,7 +13,8 @@
     </form>
 </template>
 
-<script>
+<!-- optional API -->
+<!-- <script>
 export default {
     data() {
         return {
@@ -41,6 +42,41 @@ export default {
         }
     }
 }
+
+</script> -->
+
+
+<!-- composition API -->
+<script setup>
+
+  import { ref } from 'vue';
+  import { useStore } from 'vuex';
+  import { useRouter, useRoute } from 'vue-router';
+  
+  const route = useRoute();
+  const router = useRouter();
+  const store = useStore();
+  const email = ref('');
+  const message = ref('')
+  let formIsValid = ref(true);
+
+
+  function submitForm() {
+    formIsValid.value = true;
+
+    if(email.value === '' || !email.value.includes('@') || message.value === '') {
+        formIsValid.value = false;
+        return;
+    }
+
+    store.dispatch('requests/msgCoach', {
+        coachId: route.params.id, 
+        email: email.value,
+        message: message.value
+    });
+
+    router.replace('/coaches');
+  }
 
 </script>
 

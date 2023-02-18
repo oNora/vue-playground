@@ -22,8 +22,8 @@
     </section>
 </template>
 
-
-<script>
+<!-- optional API -->
+<!-- <script>
 export default {
     props: ['id'],
     data() {
@@ -49,5 +49,32 @@ export default {
     },
 
 }
+
+</script> -->
+
+
+<!-- composition API -->
+<script setup>
+    import { reactive, ref, defineProps } from 'vue';
+    import { useStore } from 'vuex';
+    import { useRoute } from 'vue-router';
+
+    const route = useRoute();
+    const store = useStore();
+    
+    const props = defineProps(['id']);
+    let selectedCoach =  reactive(null);
+
+    // this was before in created()
+    selectedCoach = reactive(store.getters['coaches/getCoaches'].find(
+        (coach) => coach.id === this.id
+    ));
+
+    // this was in computed()
+    const fullName = ref(`${selectedCoach.firstName} ${selectedCoach.lastName}`);
+    const   areas = ref(selectedCoach.areas );
+    const   rate = ref(selectedCoach.hourlyRate);
+    const  description = ref(selectedCoach.description);
+    const  contactLink = ref(`${route.path}/${props.id}/contact`);
 
 </script>

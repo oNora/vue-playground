@@ -14,6 +14,8 @@
     </section>
 </template>
 
+<!-- optional API -->
+<!-- 
 <script>
 import RequestItem from '../../components/requests/RequestItem.vue';
 
@@ -32,8 +34,21 @@ export default {
     }
 }
 
-</script>
+</script> -->
 
+
+<!-- composition API -->
+<script setup>
+    import RequestItem from '../../components/requests/RequestItem.vue';
+    import { reactive } from 'vue';
+    import { useStore } from 'vuex';
+
+    const store = useStore();
+
+    const receivedRequest = reactive( store.getters['requests/requests']);
+    const hasRequest = reactive(store.getters['requests/hasRequests']);
+
+</script>
 
 <style scoped>
 header {
