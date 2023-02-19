@@ -1,3 +1,4 @@
+<script>
 export default {
     data () {
         return {
@@ -11,3 +12,9 @@ export default {
         })
     }
 }
+</script>
+
+
+<template>
+    <slot :greeting="greeting"></slot>
+</template>

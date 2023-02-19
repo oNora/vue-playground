@@ -1,3 +1,4 @@
+<script>
 export default {
     props: {
         initialState: {
@@ -25,4 +26,8 @@ export default {
         }
     }
 }
+</script>
 
+<template>
+    <slot :state="state" :toggle="toggle"></slot>
+</template>
