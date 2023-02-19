@@ -1,4 +1,5 @@
-<script>
+<!-- optional API -->
+<!-- <script>
 export default {
     props: {
         initialState: {
@@ -26,6 +27,23 @@ export default {
         }
     }
 }
+</script> -->
+
+<!-- composition API -->
+<script setup>
+    import { ref, defineProps } from 'vue';
+
+    const props = defineProps({
+    initialState: {
+        type: Boolean,
+        default: false
+    }
+    });
+    const state = ref(props.initialState);
+
+    function toggle () {
+        state.value = !state.value;
+    }
 </script>
 
 <template>

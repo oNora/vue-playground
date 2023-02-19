@@ -1,4 +1,5 @@
-<script>
+<!-- optional API -->
+<!-- <script>
 export default {
     data () {
         return {
@@ -12,6 +13,14 @@ export default {
         })
     }
 }
+</script> -->
+
+<!-- composition API -->
+<script setup>
+    import { ref } from 'vue';
+
+    const greeting = ref('Hello renderless component');
+
 </script>
 
 
