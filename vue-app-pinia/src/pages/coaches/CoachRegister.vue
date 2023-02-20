@@ -10,7 +10,7 @@
 <script>
 
 import CoachForm from '../../components/coaches/CoachForm.vue';
-import { useStore } from '../../store/index';
+import {useCoachesStore} from '../../store/coaches';
 
 export default {
     components: {
@@ -18,8 +18,8 @@ export default {
     },
     methods: {
         saveData(data) {
-            const rootStore = useStore();
-            rootStore.addRegisterCoach(data);
+            const coachStore = useCoachesStore();
+            coachStore.addRegisterCoach(data);
             this.$router.replace('/coaches');
         }
     }
