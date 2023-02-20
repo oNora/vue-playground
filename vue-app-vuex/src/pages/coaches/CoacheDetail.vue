@@ -63,18 +63,18 @@ export default {
     const store = useStore();
     
     const props = defineProps(['id']);
-    let selectedCoach =  reactive(null);
+    const selectedCoach =  reactive({coach: null});
 
     // this was before in created()
-    selectedCoach = reactive(store.getters['coaches/getCoaches'].find(
-        (coach) => coach.id === this.id
-    ));
+    selectedCoach.coach = store.getters['coaches/getCoaches'].find(
+        (coach) => coach.id === props.id
+    );
 
     // this was in computed()
-    const fullName = ref(`${selectedCoach.firstName} ${selectedCoach.lastName}`);
-    const   areas = ref(selectedCoach.areas );
-    const   rate = ref(selectedCoach.hourlyRate);
-    const  description = ref(selectedCoach.description);
-    const  contactLink = ref(`${route.path}/${props.id}/contact`);
+    const fullName = ref(`${selectedCoach.coach.firstName} ${selectedCoach.coach.lastName}`);
+    const areas = ref(selectedCoach.coach.areas );
+    const rate = ref(selectedCoach.coach.hourlyRate);
+    const description = ref(selectedCoach.coach.description);
+    const contactLink = ref(`${route.path}/${props.id}/contact`);
 
 </script>
