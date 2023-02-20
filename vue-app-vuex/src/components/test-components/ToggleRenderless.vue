@@ -41,7 +41,7 @@ export default {
     });
     const state = ref(props.initialState);
 
-    function toggle () {
+    const toggle = () => {
         state.value = !state.value;
     }
 </script>

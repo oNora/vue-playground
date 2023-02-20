@@ -61,7 +61,7 @@ export default {
   let formIsValid = ref(true);
 
 
-  function submitForm() {
+  const submitForm = () => {
     formIsValid.value = true;
 
     if(email.value === '' || !email.value.includes('@') || message.value === '') {
